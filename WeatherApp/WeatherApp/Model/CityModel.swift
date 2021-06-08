@@ -13,19 +13,19 @@ import Foundation
 
 struct CityModel: Codable {
     let weather: [Weather]?
-    let base: String?
+//    let base: String?
     let main: Main?
     let wind: Wind?
-    let timezone, id: Int
-    let name: String
-    let cod: Int
+  //  let timezone, id: Int
+    let name: String?
+    let cod: Int?
 }
 
 
 // MARK: - Main
 struct Main: Codable {
-    let temp, feelsLike, tempMin, tempMax: Double
-    let pressure, humidity: Int
+    let temp, feelsLike, tempMin, tempMax: Double?
+    let pressure, humidity: Int?
 
     enum CodingKeys: String, CodingKey {
         case temp
@@ -37,21 +37,16 @@ struct Main: Codable {
 }
 
 
-// MARK: - Weather
+//// MARK: - Weather
 struct Weather: Codable {
-    let id: Int
-    let main, weatherDescription, icon: String
+    let weatherDescription: String?
 
     enum CodingKeys: String, CodingKey {
-        case id, main
         case weatherDescription = "description"
-        case icon
     }
 }
 
 // MARK: - Wind
 struct Wind: Codable {
-    let speed: Double
-    let deg: Int
-    let gust: Double
+    let speed: Double?
 }
