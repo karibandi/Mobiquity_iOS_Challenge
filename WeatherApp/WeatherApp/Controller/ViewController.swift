@@ -15,6 +15,7 @@ protocol HandleMapSearch {
 
 class ViewController: UIViewController {
     @IBOutlet weak var citiesList: UITableView!
+    @IBOutlet var headerView: UIView!
     
     @IBOutlet weak var mapview: MKMapView!
     @IBOutlet weak var infoButton: UIButton!
@@ -60,11 +61,14 @@ class ViewController: UIViewController {
         let searchBar = resultSearchController!.searchBar
         searchBar.sizeToFit()
         searchBar.placeholder = "Search for places"
-        navigationItem.searchController = resultSearchController
+        headerView.addSubview(searchBar)
+        //navigationItem.searchController = resultSearchController
     }
     
     func userInterfaceModifications(){
         infoButton.applyButtonCornerRadius(_cornerRadius: 20)
+        headerView.frame.size.height = 250
+        citiesList.tableHeaderView = headerView
     }
     
     @IBAction func infoButton(_ sender: Any) {
