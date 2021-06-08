@@ -37,10 +37,10 @@ class CityViewModel {
                             let cityData = try decoder.decode(CityModel.self, from: data)
                             var cityScreenData: CityScreenData = CityScreenData()
                             cityScreenData.cityNameValue = cityData.name
-                            cityScreenData.temparatureValue = CITY_TEMPARATURE + (cityData.main?.temp?.toString() ?? DEFAULT_VALUE)
+                            cityScreenData.temparatureValue = CITY_TEMPARATURE + (cityData.main?.temp.toString() ?? DEFAULT_VALUE)
                             cityScreenData.humidityValue = CITY_HUMIDITY + "\(cityData.main?.humidity ?? 0)" + HUMIDITY_UNIT
                             cityScreenData.rainyStatusValue = RAIN_CHANCES + (cityData.weather?[0].weatherDescription ?? DEFAULT_VALUE)
-                            cityScreenData.windInfoValue = WIND_SPEED + (cityData.wind?.speed?.toString() ?? DEFAULT_VALUE) + WIND_UNIT
+                            cityScreenData.windInfoValue = WIND_SPEED + (cityData.wind?.speed.toString() ?? DEFAULT_VALUE) + WIND_UNIT
                             self.viewModelDelegate?.reloadCityScreen(cityScreenData: cityScreenData)
                         } catch {
                             // deal with error from JSON decoding if used in production
