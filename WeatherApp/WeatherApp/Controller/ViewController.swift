@@ -14,19 +14,14 @@ protocol HandleMapSearch {
 }
 
 class ViewController: UIViewController {
-    @IBOutlet weak var citiesList: UITableView!
-    @IBOutlet var headerView: UIView!
     
+    @IBOutlet weak var citiesList: UITableView!
     @IBOutlet weak var mapview: MKMapView!
     @IBOutlet weak var infoButton: UIButton!
-    
-
     let locationManager = CLLocationManager()
     var resultSearchController:UISearchController? = nil
-    var selectedPin:MKPlacemark? = nil
-    var placeMarkArray = [String]()
+
     private var viewModel = HomeViewModel()
-    var tableFeed = [[String:Any]]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +31,9 @@ class ViewController: UIViewController {
         setUpSearchController()
         setUpSearchbar()
         userInterfaceModifications()
+        
+        //setup viewmodel
+        viewModel.viewModelDelegate = self
     }
     
     func locationManagerFunction(){
@@ -61,14 +59,11 @@ class ViewController: UIViewController {
         let searchBar = resultSearchController!.searchBar
         searchBar.sizeToFit()
         searchBar.placeholder = "Search for places"
-        headerView.addSubview(searchBar)
-        //navigationItem.searchController = resultSearchController
+        navigationItem.searchController = resultSearchController
     }
     
     func userInterfaceModifications(){
         infoButton.applyButtonCornerRadius(_cornerRadius: 20)
-        headerView.frame.size.height = 250
-        citiesList.tableHeaderView = headerView
     }
     
     @IBAction func infoButton(_ sender: Any) {
@@ -100,47 +95,40 @@ extension ViewController : CLLocationManagerDelegate {
 
 extension ViewController: HandleMapSearch {
     func dropPinZoomIn(placemark:Placemark){
-        
-        resultSearchController?.searchBar.text  = nil
-        selectedPin = placemark.toMKPlacemark
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = placemark.coordinate
-        annotation.title = placemark.name
-        var dict = [String:Any]()
-        dict["name"] = placemark.name
-        dict["latitude"] = placemark.coordinate.latitude
-        dict["longitude"] = placemark.coordinate.longitude
-        tableFeed.append(dict)
-        placeMarkArray.append(placemark.name!)
-        mapview.addAnnotation(annotation)
-        citiesList.reloadData()
-        let span =  MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-        let region = MKCoordinateRegion(center: placemark.coordinate, span: span)
-        mapview.setRegion(region, animated: true)
+        viewModel.prepareMapViewDataGiven(placemark: placemark)
     }
 }
 
 extension ViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let data = tableFeed[indexPath.row]
+        let data = viewModel.tableFeed[indexPath.row]
         let cityView = storyboard?.instantiateViewController(identifier: "CityScreenController") as! CityScreenController
-        cityView.latitude = data["latitude"] as? Double
-        cityView.longitude = data["longitude"] as? Double
+        cityView.cityModelView = CityViewModel.init(latitude: data["latitude"] as? Double ?? 0, longitude: data["longitude"] as? Double ?? 0)
         self.navigationController?.pushViewController(cityView, animated: true)
-        
     }
-    
 }
 
 extension ViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tableFeed.count
+        return viewModel.tableFeed.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       let cell =  tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        let data = tableFeed[indexPath.row]
+        let data = viewModel.tableFeed[indexPath.row]
         cell.textLabel?.text = (data["name"] as! String)
         return cell
     }
 }
+
+extension ViewController: HomeViewModelProtocol{
+    func reloadHomeScreenWith(annotation: MKPointAnnotation) {
+        resultSearchController?.searchBar.text  = nil
+        mapview.addAnnotation(annotation)
+        citiesList.reloadData()
+        let span =  MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        let region = MKCoordinateRegion(center: annotation.coordinate, span: span)
+        mapview.setRegion(region, animated: true)
+    }
+}
+

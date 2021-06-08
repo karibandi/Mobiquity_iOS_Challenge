@@ -40,3 +40,4 @@ class HTTPManager {
         task.resume()
     }
 }
+

@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cm0-cr-f8I">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="338" width="414" height="524"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="SL7-eP-CjZ">
@@ -49,22 +49,33 @@
                                     <action selector="infoButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sT4-fR-0Pd"/>
                                 </connections>
                             </button>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="BeK-vN-2YE">
+                                <rect key="frame" x="0.0" y="88" width="414" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="Rez-9J-igg"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="M9h-Wl-TuM"/>
+                                </connections>
+                            </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="cm0-cr-f8I" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="1qq-tP-GFg"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Sdr-UL-5J3" secondAttribute="trailing" constant="20" id="1vK-MF-fEX"/>
                             <constraint firstAttribute="bottom" secondItem="Sdr-UL-5J3" secondAttribute="bottom" constant="20" id="BJz-Ef-bOd"/>
-                            <constraint firstItem="cm0-cr-f8I" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="TDm-Si-x1X"/>
-                            <constraint firstItem="cm0-cr-f8I" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="gOI-yp-dYP"/>
-                            <constraint firstItem="cm0-cr-f8I" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="hCF-Fy-tqg"/>
-                            <constraint firstItem="cm0-cr-f8I" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="nJw-YJ-Jk1"/>
+                            <constraint firstItem="cm0-cr-f8I" firstAttribute="top" secondItem="BeK-vN-2YE" secondAttribute="bottom" id="HAw-46-m27"/>
+                            <constraint firstItem="cm0-cr-f8I" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bhh-E1-qhM"/>
+                            <constraint firstItem="BeK-vN-2YE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="eYh-en-JQh"/>
+                            <constraint firstItem="cm0-cr-f8I" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="gZO-4W-dn9"/>
+                            <constraint firstItem="BeK-vN-2YE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="p5C-nX-LDA"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BeK-vN-2YE" secondAttribute="trailing" id="t0Z-Jb-BPN"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Iv7-TC-8Wr"/>
                     <connections>
                         <outlet property="citiesList" destination="cm0-cr-f8I" id="Mvs-KA-DOp"/>
-                        <outlet property="headerView" destination="b4N-5G-I5c" id="5iB-6a-0ej"/>
                         <outlet property="infoButton" destination="Sdr-UL-5J3" id="JUz-uA-h46"/>
                         <outlet property="mapview" destination="BeK-vN-2YE" id="4Py-H5-bQf"/>
                     </connections>
@@ -73,22 +84,8 @@
                 <view contentMode="scaleToFill" id="b4N-5G-I5c">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="BeK-vN-2YE">
-                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                            <connections>
-                                <outlet property="delegate" destination="BYZ-38-t0r" id="M9h-Wl-TuM"/>
-                            </connections>
-                        </mapView>
-                    </subviews>
                     <viewLayoutGuide key="safeArea" id="bv5-uk-NPj"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <constraints>
-                        <constraint firstItem="BeK-vN-2YE" firstAttribute="leading" secondItem="bv5-uk-NPj" secondAttribute="leading" id="KDN-ZW-JAV"/>
-                        <constraint firstItem="BeK-vN-2YE" firstAttribute="top" secondItem="b4N-5G-I5c" secondAttribute="top" id="cc2-JK-h4k"/>
-                        <constraint firstItem="BeK-vN-2YE" firstAttribute="trailing" secondItem="bv5-uk-NPj" secondAttribute="trailing" id="oHu-NE-5yX"/>
-                        <constraint firstItem="BeK-vN-2YE" firstAttribute="bottom" secondItem="bv5-uk-NPj" secondAttribute="bottom" id="wxL-oq-QOF"/>
-                    </constraints>
                 </view>
             </objects>
             <point key="canvasLocation" x="886.95652173913049" y="63.616071428571423"/>

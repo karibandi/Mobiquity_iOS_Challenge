@@ -11,7 +11,6 @@ import MapKit
 
 class LocationSearchTable: UITableViewController {
     
-    var matchingItems:[MKMapItem] = []
     var mapView: MKMapView? = nil
     var handleMapSearchDelegate:HandleMapSearch? = nil
     private var matchingPlacemarks = [Placemark]()
@@ -70,4 +69,5 @@ extension LocationSearchTable {
     }
     
     }
+
 
