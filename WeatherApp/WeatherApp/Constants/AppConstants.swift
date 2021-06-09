@@ -14,7 +14,9 @@ let CITY_TEMPARATURE = "City temparature is: "
 let WIND_SPEED = "Wind is blowing at the speed : "
 let RAIN_CHANCES = "Chances of rain: "
 let CITY_HUMIDITY = "City humidity : "
-let HUMIDITY_UNIT = " g.kg-1"
+let HUMIDITY_UNIT = " %"
+let TEMPARATURE_UNIT = " °C"
+
 let WIND_UNIT = " mph"
 let DEFAULT_VALUE = "N/A"
 

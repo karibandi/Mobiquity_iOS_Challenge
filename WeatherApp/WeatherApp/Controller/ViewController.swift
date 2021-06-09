@@ -100,11 +100,27 @@ extension ViewController: HandleMapSearch {
 }
 
 extension ViewController: UITableViewDelegate{
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let data = viewModel.tableFeed[indexPath.row]
         let cityView = storyboard?.instantiateViewController(identifier: "CityScreenController") as! CityScreenController
         cityView.cityModelView = CityViewModel.init(latitude: data["latitude"] as? Double ?? 0, longitude: data["longitude"] as? Double ?? 0)
         self.navigationController?.pushViewController(cityView, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let coordinates = viewModel.tableFeed[indexPath.row]
+            
+            viewModel.tableFeed.remove(at: indexPath.row)
+            viewModel.removeAnnotation(latitude: (coordinates["latitude"]) as! Double, longitude: coordinates["longitude"] as! Double)
+            
+            tableView.reloadData()
+        }
     }
 }
 
@@ -122,6 +138,17 @@ extension ViewController: UITableViewDataSource{
 }
 
 extension ViewController: HomeViewModelProtocol{
+    func reloadHomeScreenAfterAnnotation(annotationToRemoce: MKPointAnnotation) {
+        
+        for annotations in mapview.annotations{
+            if annotations.coordinate == annotationToRemoce.coordinate {
+                mapview.removeAnnotation(annotations)
+            }
+        }
+    }
+    
+
+    
     func reloadHomeScreenWith(annotation: MKPointAnnotation) {
         resultSearchController?.searchBar.text  = nil
         mapview.addAnnotation(annotation)

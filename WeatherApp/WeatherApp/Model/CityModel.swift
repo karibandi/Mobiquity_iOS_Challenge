@@ -13,10 +13,8 @@ import Foundation
 
 struct CityModel: Codable {
     let weather: [Weather]?
-//    let base: String?
     let main: Main?
     let wind: Wind?
-  //  let timezone, id: Int
     let name: String?
     let cod: Int?
 }

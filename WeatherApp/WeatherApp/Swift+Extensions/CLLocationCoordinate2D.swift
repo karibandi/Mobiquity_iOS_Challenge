@@ -27,3 +27,13 @@ extension CLLocationCoordinate2D: Codable {
         try container.encode(longitude, forKey: .longitude)
     }
 }
+
+extension CLLocationCoordinate2D: Equatable {
+    public static func == (lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool {
+        let numbersAfterCommaAccuracy: Double = 4
+        let ratio = numbersAfterCommaAccuracy * 10
+        let isLatitudeEqual = ((lhs.latitude - rhs.latitude) * ratio).rounded(.down) == 0
+        let isLongitudeEqual = ((lhs.latitude - rhs.latitude) * ratio).rounded(.down) == 0
+        return isLatitudeEqual && isLongitudeEqual
+    }
+}

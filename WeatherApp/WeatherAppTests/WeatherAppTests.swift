@@ -23,7 +23,7 @@ class WeatherAppTests: XCTestCase {
 
         // setting default session configuration
         sessionUnderTest = URLSession(configuration : URLSessionConfiguration.default)
-        weatherURL = "http://api.openweathermap.org/data/2.5/weather?lat=13.1&lon=80.3&appid=fae7190d7e6433ec3a45285ffcf55c86"
+      let  weatherURL = "http://api.openweathermap.org/data/2.5/weather?lat=13.1&lon=80.3&appid=fae7190d7e6433ec3a45285ffcf55c86"
         // setting url string directy with query parameters
         url = URL(string: weatherURL)
     }

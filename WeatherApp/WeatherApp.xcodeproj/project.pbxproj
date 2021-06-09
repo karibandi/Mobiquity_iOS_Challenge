@@ -30,6 +30,7 @@
 		4D733CCA266D32DD0018FB6C /* CLLocationCoordinate2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D733CC8266D32DD0018FB6C /* CLLocationCoordinate2D.swift */; };
 		4D733CCD266D33B50018FB6C /* Placemark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D733CCC266D33B50018FB6C /* Placemark.swift */; };
 		4D733CCE266D33B50018FB6C /* Placemark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D733CCC266D33B50018FB6C /* Placemark.swift */; };
+		4D7AA9C82670320C00534D83 /* temparature+converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7AA9C72670320C00534D83 /* temparature+converter.swift */; };
 		4D7B26A4266DBB7B00F3CD3F /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7B26A3266DBB7B00F3CD3F /* MapManager.swift */; };
 		4D7B26A8266E00E100F3CD3F /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7B26A7266E00E100F3CD3F /* AppConstants.swift */; };
 		4D7B26AB266E01DC00F3CD3F /* Networkmanager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7B26AA266E01DC00F3CD3F /* Networkmanager.swift */; };
@@ -86,6 +87,7 @@
 		4D733CC4266D0D7F0018FB6C /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		4D733CC8266D32DD0018FB6C /* CLLocationCoordinate2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocationCoordinate2D.swift; sourceTree = "<group>"; };
 		4D733CCC266D33B50018FB6C /* Placemark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Placemark.swift; sourceTree = "<group>"; };
+		4D7AA9C72670320C00534D83 /* temparature+converter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "temparature+converter.swift"; sourceTree = "<group>"; };
 		4D7B26A3266DBB7B00F3CD3F /* MapManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
 		4D7B26A7266E00E100F3CD3F /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		4D7B26AA266E01DC00F3CD3F /* Networkmanager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networkmanager.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 		4D733C89266C8EEC0018FB6C /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				4D7AA9C6267031E700534D83 /* Helper */,
 				4D715E8E266F286100C220DE /* View */,
 				4D715E8C266F283600C220DE /* Manager */,
 				4D7B26AD266E030400F3CD3F /* ViewModel */,
@@ -214,6 +217,14 @@
 				4D7B26B4266E38A300F3CD3F /* CityModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		4D7AA9C6267031E700534D83 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				4D7AA9C72670320C00534D83 /* temparature+converter.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		4D7B26A5266E005200F3CD3F /* Controller */ = {
@@ -393,6 +404,7 @@
 				4D715E95266F4A3000C220DE /* UIButton + Extension.swift in Sources */,
 				4D733CCD266D33B50018FB6C /* Placemark.swift in Sources */,
 				4D7B26B5266E38A300F3CD3F /* CityModel.swift in Sources */,
+				4D7AA9C82670320C00534D83 /* temparature+converter.swift in Sources */,
 				4D7B26A4266DBB7B00F3CD3F /* MapManager.swift in Sources */,
 				4D733C8F266C8EEC0018FB6C /* ViewController.swift in Sources */,
 				4D7B26A8266E00E100F3CD3F /* AppConstants.swift in Sources */,

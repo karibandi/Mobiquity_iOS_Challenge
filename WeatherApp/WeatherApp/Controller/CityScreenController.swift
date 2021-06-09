@@ -39,13 +39,23 @@ override func viewDidLoad() {
 }
 
 extension CityScreenController: CityViewModelProtocol {
+    func sendErrorReport(errorMessage: Error) {
+        DispatchQueue.main.async {
+            LoadingView.shared.dismiss()
+            let alertMessage = UIAlertController(title: "Something Went Wrong", message: errorMessage.localizedDescription, preferredStyle: .alert)
+            alertMessage.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+            self.present(alertMessage, animated: true)
+            
+        }
+    }
+    
     func reloadCityScreen(cityScreenData: CityScreenData) {
         DispatchQueue.main.async {
             LoadingView.shared.dismiss()
             self.cityNameLabel.text = cityScreenData.cityNameValue
             self.temparatureLab.text = cityScreenData.temparatureValue
             self.humidityLabel.text = cityScreenData.humidityValue
-            self.rainyStatusLabel.text = cityScreenData.temparatureValue
+            self.rainyStatusLabel.text = cityScreenData.rainyStatusValue
             self.windInfoLabel.text = cityScreenData.windInfoValue
         }
     }
