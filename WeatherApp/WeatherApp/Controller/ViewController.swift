@@ -26,7 +26,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        self.navigationController?.navigationBar.barTintColor = appColor
+        UINavigationBar.appearance().barTintColor = appColor
         locationManagerFunction()
         setUpSearchController()
         setUpSearchbar()
@@ -63,7 +63,12 @@ class ViewController: UIViewController {
     }
     
     func userInterfaceModifications(){
-        infoButton.applyButtonCornerRadius(_cornerRadius: 20)
+        infoButton.applyButtonCornerRadius(_cornerRadius: 10)
+    }
+    
+    @IBAction func editCityList(_ sender: UIBarButtonItem) {
+        self.citiesList.isEditing = !self.citiesList.isEditing
+        sender.title = (self.citiesList.isEditing) ? "Done" : "Edit"
     }
     
     @IBAction func infoButton(_ sender: Any) {

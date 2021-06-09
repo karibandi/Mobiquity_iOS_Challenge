@@ -3,12 +3,13 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--WeatherApp-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -34,21 +35,6 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="jX8-Cw-TxZ"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sdr-UL-5J3">
-                                <rect key="frame" x="344" y="826" width="50" height="50"/>
-                                <color key="backgroundColor" red="0.28990292550000002" green="0.66682821510000001" blue="0.8915777802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="l4T-s2-A7y"/>
-                                    <constraint firstAttribute="width" constant="50" id="rwg-Dr-d4h"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="italicSystem" pointSize="22"/>
-                                <state key="normal" title="i">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="infoButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sT4-fR-0Pd"/>
-                                </connections>
-                            </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="BeK-vN-2YE">
                                 <rect key="frame" x="0.0" y="88" width="414" height="250"/>
                                 <constraints>
@@ -58,22 +44,44 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="M9h-Wl-TuM"/>
                                 </connections>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sdr-UL-5J3">
+                                <rect key="frame" x="348" y="796" width="50" height="50"/>
+                                <color key="backgroundColor" red="0.28990292550000002" green="0.66682821510000001" blue="0.8915777802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="DKf-Yu-A1B"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="OAB-j9-2H9"/>
+                                    <constraint firstAttribute="width" constant="50" id="R1q-Y9-kMh"/>
+                                </constraints>
+                                <state key="normal">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <imageReference key="image" image="info.circle" catalog="system" renderingMode="original"/>
+                                </state>
+                                <connections>
+                                    <action selector="infoButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sT4-fR-0Pd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="cm0-cr-f8I" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="1qq-tP-GFg"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Sdr-UL-5J3" secondAttribute="trailing" constant="20" id="1vK-MF-fEX"/>
-                            <constraint firstAttribute="bottom" secondItem="Sdr-UL-5J3" secondAttribute="bottom" constant="20" id="BJz-Ef-bOd"/>
                             <constraint firstItem="cm0-cr-f8I" firstAttribute="top" secondItem="BeK-vN-2YE" secondAttribute="bottom" id="HAw-46-m27"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Sdr-UL-5J3" secondAttribute="trailing" constant="16" id="Pgn-sJ-zg2"/>
                             <constraint firstItem="cm0-cr-f8I" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bhh-E1-qhM"/>
                             <constraint firstItem="BeK-vN-2YE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="eYh-en-JQh"/>
                             <constraint firstItem="cm0-cr-f8I" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="gZO-4W-dn9"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Sdr-UL-5J3" secondAttribute="bottom" constant="16" id="oKD-hZ-Rg6"/>
                             <constraint firstItem="BeK-vN-2YE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="p5C-nX-LDA"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BeK-vN-2YE" secondAttribute="trailing" id="t0Z-Jb-BPN"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Iv7-TC-8Wr"/>
+                    <navigationItem key="navigationItem" title="WeatherApp" id="Iv7-TC-8Wr">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" image="pencil.circle.fill" catalog="system" id="pxF-V3-Tjq">
+                            <connections>
+                                <action selector="editCityList:" destination="BYZ-38-t0r" id="HG7-cn-BIR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="citiesList" destination="cm0-cr-f8I" id="Mvs-KA-DOp"/>
                         <outlet property="infoButton" destination="Sdr-UL-5J3" id="JUz-uA-h46"/>
@@ -82,10 +90,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <view contentMode="scaleToFill" id="b4N-5G-I5c">
-                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <rect key="frame" x="0.0" y="0.0" width="405" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bookmarks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bcn-0k-RMJ">
+                            <rect key="frame" x="159.5" y="10" width="86" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
                     <viewLayoutGuide key="safeArea" id="bv5-uk-NPj"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="bcn-0k-RMJ" firstAttribute="top" secondItem="b4N-5G-I5c" secondAttribute="top" constant="10" id="GDr-T3-EJv"/>
+                        <constraint firstItem="bcn-0k-RMJ" firstAttribute="centerX" secondItem="bv5-uk-NPj" secondAttribute="centerX" id="fh3-3M-505"/>
+                    </constraints>
                 </view>
             </objects>
             <point key="canvasLocation" x="886.95652173913049" y="63.616071428571423"/>
@@ -227,6 +247,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="info.circle" catalog="system" width="128" height="121"/>
+        <image name="pencil.circle.fill" catalog="system" width="128" height="121"/>
         <image name="weatherimg" width="234" height="216"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
