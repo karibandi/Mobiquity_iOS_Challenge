@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 let appColor = UIColor(red: 84/250, green: 172/250, blue: 223/250, alpha: 1.0)
+let lightGrey = UIColor.lightGray
 
 let CITY_TEMPARATURE = "City temparature is: "
 let WIND_SPEED = "Wind is blowing at the speed : "

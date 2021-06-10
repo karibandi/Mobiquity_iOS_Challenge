@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var citiesList: UITableView!
     @IBOutlet weak var mapview: MKMapView!
     @IBOutlet weak var infoButton: UIButton!
+    var emptyLabel:UILabel!
     let locationManager = CLLocationManager()
     var resultSearchController:UISearchController? = nil
 
@@ -131,7 +132,16 @@ extension ViewController: UITableViewDelegate{
 
 extension ViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.tableFeed.count
+        if self.viewModel.tableFeed.count == 0{
+            displayEmptyString()
+            tableView.backgroundView = emptyLabel
+            tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+              return 0
+          } else {
+            tableView.backgroundView = nil
+            tableView.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
+            return viewModel.tableFeed.count
+          }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -139,6 +149,13 @@ extension ViewController: UITableViewDataSource{
         let data = viewModel.tableFeed[indexPath.row]
         cell.textLabel?.text = (data["name"] as! String)
         return cell
+    }
+    
+    func displayEmptyString() {
+         emptyLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height))
+          emptyLabel.textColor = lightGrey
+          emptyLabel.text = "Search for cities in the above search bar"
+          emptyLabel.textAlignment = NSTextAlignment.center
     }
 }
 
