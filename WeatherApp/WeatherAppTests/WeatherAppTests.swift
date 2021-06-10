@@ -52,22 +52,33 @@ class WeatherAppTests: XCTestCase {
         waitForExpectations(timeout: 5, handler: nil)
     }
     
-    //MARK: Lat/long tests
-    func testLatitude() {
-        let latitude = viewModel?.latitude
-        XCTAssertEqual(latitude, 10.56, "latitude mismatch")
-    }
-    
-    func testLongitude() {
-        let longitude = viewModel?.latitude
-        XCTAssertEqual(longitude, 9.5644, "longitude mismatch")
-    }
-    
-    func testcityDataCheck() {
-        let data = homeViewModel?.tableFeed
-        XCTAssertEqual(data?.count, 10, "city count mismatch found")
-    }
-    
+    func testWeatherAPIWorking() throws {
+        let expectation = XCTestExpectation.init(description: "Your expectation")
+        let givenName = "Chennai"
+        let  weatherURL = "http://api.openweathermap.org/data/2.5/weather?lat=13.1&lon=80.3&appid=fae7190d7e6433ec3a45285ffcf55c86"
+        HTTPManager.shared.get(urlString: weatherURL, completionBlock: { [weak self] result in
+                  guard let self = self else {return}
+                  switch result {
+                  case .failure(let error):
+                      print ("failure", error)
+                  case .success(let data) :
+                      let decoder = JSONDecoder()
+                      do
+                              {
+                                  let cityData = try decoder.decode(CityModel.self, from: data)
+                                XCTAssertEqual(cityData.name!, givenName, "Given name is matched with expected value")
+                              } catch {
+                                  // deal with error from JSON decoding if used in production
+                                  print(error)
+                              }
+                  }
+                  DispatchQueue.main.async {
+                      expectation.fulfill()
+                  }
+              })
+              wait(for: [expectation], timeout: 10)
+          }
+        
     override func tearDown() {
         service = nil
         super.tearDown()

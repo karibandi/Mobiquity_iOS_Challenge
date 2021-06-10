@@ -27,9 +27,10 @@
 		4D733CC5266D0D7F0018FB6C /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D733CC4266D0D7F0018FB6C /* ViewModel.swift */; };
 		4D733CC6266D0D7F0018FB6C /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D733CC4266D0D7F0018FB6C /* ViewModel.swift */; };
 		4D733CC9266D32DD0018FB6C /* CLLocationCoordinate2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D733CC8266D32DD0018FB6C /* CLLocationCoordinate2D.swift */; };
-		4D733CCA266D32DD0018FB6C /* CLLocationCoordinate2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D733CC8266D32DD0018FB6C /* CLLocationCoordinate2D.swift */; };
 		4D733CCD266D33B50018FB6C /* Placemark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D733CCC266D33B50018FB6C /* Placemark.swift */; };
 		4D733CCE266D33B50018FB6C /* Placemark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D733CCC266D33B50018FB6C /* Placemark.swift */; };
+		4D76A8662671FC7800BE0C62 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7B26A7266E00E100F3CD3F /* AppConstants.swift */; };
+		4D76A8672671FCD400BE0C62 /* temparature+converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7AA9C72670320C00534D83 /* temparature+converter.swift */; };
 		4D7AA9C82670320C00534D83 /* temparature+converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7AA9C72670320C00534D83 /* temparature+converter.swift */; };
 		4D7B26A4266DBB7B00F3CD3F /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7B26A3266DBB7B00F3CD3F /* MapManager.swift */; };
 		4D7B26A8266E00E100F3CD3F /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7B26A7266E00E100F3CD3F /* AppConstants.swift */; };
@@ -425,10 +426,11 @@
 				4D7B26B3266E0E5800F3CD3F /* Double+Extension.swift in Sources */,
 				4D715E91266F2A7000C220DE /* RulesScreenController.swift in Sources */,
 				4D733CC6266D0D7F0018FB6C /* ViewModel.swift in Sources */,
-				4D733CCA266D32DD0018FB6C /* CLLocationCoordinate2D.swift in Sources */,
 				4D733CC3266D05FC0018FB6C /* CityScreenController.swift in Sources */,
 				4D733CA5266C8EF00018FB6C /* WeatherAppTests.swift in Sources */,
 				4D7B26AC266E01DC00F3CD3F /* Networkmanager.swift in Sources */,
+				4D76A8662671FC7800BE0C62 /* AppConstants.swift in Sources */,
+				4D76A8672671FCD400BE0C62 /* temparature+converter.swift in Sources */,
 				4D7B26B0266E0CAC00F3CD3F /* CityViewModel.swift in Sources */,
 				4D7B26FF266E947500F3CD3F /* LoaderView.swift in Sources */,
 				4D733CCE266D33B50018FB6C /* Placemark.swift in Sources */,
